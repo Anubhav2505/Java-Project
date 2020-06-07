@@ -32,7 +32,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
     }
     Connection con;
     PreparedStatement pst;
-    
+
     
 
     /**
@@ -287,7 +287,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
 public void autoid() 
     {
         try{Class.forName("com.mysql.jdbc.Driver");
-         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline","root","12345");
+         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline","root","");
          Statement s=con.createStatement();
          ResultSet rs = s.executeQuery("select MAX(id) from customer;");
          rs.next();
