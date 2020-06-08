@@ -1,3 +1,7 @@
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +13,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +40,8 @@ public class AddCustome extends javax.swing.JInternalFrame {
     }
     Connection con;
     PreparedStatement pst;
+    String path = null;
+    byte[] userimage = null;
 
     
 
@@ -61,7 +71,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         idnm = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbippic = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -162,7 +172,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
         idnm.setForeground(new java.awt.Color(255, 0, 0));
         idnm.setText("jLabel7");
 
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbippic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -226,6 +236,11 @@ public class AddCustome extends javax.swing.JInternalFrame {
         );
 
         jButton3.setText("Browse");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,7 +261,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3)
@@ -272,7 +287,7 @@ public class AddCustome extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)))
                         .addGap(41, 41, 41)
@@ -312,7 +327,8 @@ public void autoid()
         }
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- String id=idnm.getText();  
+
+        String id=idnm.getText();  
  String Fn=Fname.getText();
  String Ln=Lname.getText();
  String nicno = Nno.getText();
@@ -354,6 +370,27 @@ else
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+JFileChooser picchooser =new JFileChooser ();
+picchooser.showOpenDialog(null);
+File pic= picchooser.getSelectedFile();
+FileNameExtensionFilter filter = new FileNameExtensionFilter("","images","png","jpg");
+picchooser.addChoosableFileFilter(filter);
+path=pic.getAbsolutePath();
+BufferedImage img;
+        try {
+            img = ImageIO.read(picchooser.getSelectedFile());
+            ImageIcon imageIcon =new ImageIcon(new
+            ImageIcon(img).getImage().getScaledInstance(250,250,Image.SCALE_DEFAULT));
+            lbippic.setIcon(imageIcon);
+        } catch (IOException ex) {
+            Logger.getLogger(AddCustome.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Fname;
@@ -368,7 +405,6 @@ else
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -378,6 +414,7 @@ else
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbippic;
     private javax.swing.JRadioButton r1;
     private javax.swing.JRadioButton r2;
     private javax.swing.JTextField txtcnt;
