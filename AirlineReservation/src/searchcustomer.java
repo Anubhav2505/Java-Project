@@ -1,3 +1,5 @@
+
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,12 +34,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Anubhav
  */
-public class AddCustome extends javax.swing.JInternalFrame {
+public class searchcustomer extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form AddCustome
      */
-    public AddCustome() {
+    public searchcustomer() {
         initComponents();
         autoid();
     }
@@ -57,6 +60,8 @@ public class AddCustome extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,6 +88,11 @@ public class AddCustome extends javax.swing.JInternalFrame {
         r2 = new javax.swing.JRadioButton();
         txtcnt = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+
+        jButton4.setText("jButton4");
+
+        jButton5.setText("jButton5");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -172,7 +182,6 @@ public class AddCustome extends javax.swing.JInternalFrame {
 
         idnm.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         idnm.setForeground(new java.awt.Color(255, 0, 0));
-        idnm.setText("jLabel7");
 
         lbippic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -244,6 +253,13 @@ public class AddCustome extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton6.setText("search");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,42 +272,44 @@ public class AddCustome extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6)
                         .addGap(49, 49, 49)
                         .addComponent(idnm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
-                                .addGap(27, 27, 27))))
+                        .addGap(50, 50, 50)
+                        .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(69, 69, 69)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(57, 57, 57))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idnm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(idnm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)))
+                            .addComponent(lbippic, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
@@ -336,7 +354,7 @@ public void autoid()
  String nicno = Nno.getText();
  String passid=Pid.getText();
 String ad=addres.getText();
- DateFormat da= new SimpleDateFormat("dd-mm-yy");
+ DateFormat da= new SimpleDateFormat("yyyy-mm-dd");
  String date=da.format(txtdob.getDateFormat());
  String gender;
  if(r1.isSelected())
@@ -404,6 +422,63 @@ BufferedImage img;
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        String id=idnm.getText();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/airline","root","");
+            pst = con.prepareStatement("select*from customer where id = ?");
+            pst.setString(1, id);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()==false)
+            {
+            JOptionPane.showMessageDialog(this, "record not found");
+            }
+            else{
+                    String firstname = rs.getString("firstname");
+                    String lastname = rs.getString("lastname");
+                    String nicno = rs.getString("nic");
+                    String passport= rs.getString("passport");
+                    String address = rs.getString("address");
+                    String dob = rs.getString("dob");
+                    Date date1 = (Date) new SimpleDateFormat("yyyy-mm-dd").parse(dob);
+                    Blob blob =rs.getBlob("photo");
+                    byte[] _imagebytes=blob.getBytes( 1, (int) blob.length( ) ); 
+                    ImageIcon image = new ImageIcon(_imagebytes);
+                    Image im = image.getImage();
+                    Image myImg = im.getScaledInstance(lbippic.getWidth(),lbippic.getHeight(),Image.SCALE_SMOOTH); 
+                    ImageIcon newImage = new ImageIcon(myImg);
+
+                    String gender = rs.getString("gender");
+                    if(gender.equals("Female"))
+                    {r1.setSelected(false);
+                     r2.setSelected(true);
+                    }
+                    else{r1.setSelected(true);
+                     r2.setSelected(false);
+                    }
+                    String contact =rs.getString("contact");
+                    Fname.setText(firstname.trim());
+                    Lname.setText(lastname.trim());
+                    Nno.setText(nicno.trim());
+                    Pid.setText(passport.trim());
+                    addres.setText(address.trim());
+                    txtcnt.setText(contact.trim());
+                    txtdob.setDate(date1);
+                    lbippic.setIcon(newImage);
+                    
+                    }
+        } catch (ClassNotFoundException | SQLException | ParseException ex) {
+            Logger.getLogger(searchcustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        
+ // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Fname;
@@ -416,6 +491,9 @@ BufferedImage img;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
