@@ -81,6 +81,11 @@ public class Main extends javax.swing.JFrame {
         jMenu2.setText("Tickets");
 
         jMenuItem3.setText("Book Tickets");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -88,6 +93,11 @@ public class Main extends javax.swing.JFrame {
         jMenu3.setText("Flight");
 
         jMenuItem4.setText("Add Flight");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuBar1.add(jMenu3);
@@ -95,6 +105,11 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("User");
 
         jMenuItem5.setText("User Creation");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
@@ -122,17 +137,36 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       AddCustome cus = new AddCustome();
+       addCustomer cus = new addCustomer();
 JDesktopPane1.add(cus);
 cus.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-    searchcustomer cus = new searchcustomer();
+    searchCustomer cus = new searchCustomer();
 JDesktopPane1.add(cus);
 cus.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+ticket t = new ticket();
+        JDesktopPane1.add(t);
+        t.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+ addflight f = new addflight();
+        JDesktopPane1.add(f);
+        f.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+  userCreation u = new userCreation();
+        JDesktopPane1.add(u);
+        u.setVisible(true);
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
